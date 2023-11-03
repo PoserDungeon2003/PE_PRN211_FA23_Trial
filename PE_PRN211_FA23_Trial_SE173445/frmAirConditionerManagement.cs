@@ -41,6 +41,13 @@ namespace PE_PRN211_FA23_Trial_SE173445
                 x.DollarPrice,
                 x.Supplier.SupplierName
             }).ToList();
+            cbSupplierID.DataSource = context.SupplierCompanies.Select(x => new
+            {
+                x.SupplierId,
+                x.SupplierName
+            }).ToList();
+            cbSupplierID.DisplayMember = "SupplierName";
+            cbSupplierID.ValueMember = "SupplierId";
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -92,7 +99,6 @@ namespace PE_PRN211_FA23_Trial_SE173445
                 txtSoundPressureLevel.Text = row.Cells[4].Value.ToString();
                 txtDolarPrice.Text = row.Cells[5].Value.ToString();
                 txtFeatureFunction.Text = row.Cells[6].Value.ToString();
-                txtSupplierID.Text = row.Cells[7].Value.ToString();
             }
         }
 

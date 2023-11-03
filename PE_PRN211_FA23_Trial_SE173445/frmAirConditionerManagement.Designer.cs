@@ -40,7 +40,6 @@
             txtWarranty = new TextBox();
             txtSoundPressureLevel = new TextBox();
             txtFeatureFunction = new TextBox();
-            txtSupplierID = new TextBox();
             dataGridView1 = new DataGridView();
             btnSave = new Button();
             btnUpdate = new Button();
@@ -52,6 +51,7 @@
             txtDolarPrice = new TextBox();
             txtQuantity = new TextBox();
             groupBox1 = new GroupBox();
+            cbSupplierID = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -124,9 +124,9 @@
             labelSupplierID.AutoSize = true;
             labelSupplierID.Location = new Point(786, 193);
             labelSupplierID.Name = "labelSupplierID";
-            labelSupplierID.Size = new Size(83, 20);
+            labelSupplierID.Size = new Size(108, 20);
             labelSupplierID.TabIndex = 7;
-            labelSupplierID.Text = "Supplier ID";
+            labelSupplierID.Text = "Supplier Name";
             // 
             // txtAirConditionerName
             // 
@@ -155,13 +155,6 @@
             txtFeatureFunction.Name = "txtFeatureFunction";
             txtFeatureFunction.Size = new Size(303, 27);
             txtFeatureFunction.TabIndex = 8;
-            // 
-            // txtSupplierID
-            // 
-            txtSupplierID.Location = new Point(949, 186);
-            txtSupplierID.Name = "txtSupplierID";
-            txtSupplierID.Size = new Size(303, 27);
-            txtSupplierID.TabIndex = 8;
             // 
             // dataGridView1
             // 
@@ -263,18 +256,26 @@
             groupBox1.TabIndex = 18;
             groupBox1.TabStop = false;
             // 
+            // cbSupplierID
+            // 
+            cbSupplierID.FormattingEnabled = true;
+            cbSupplierID.Location = new Point(949, 192);
+            cbSupplierID.Name = "cbSupplierID";
+            cbSupplierID.Size = new Size(303, 28);
+            cbSupplierID.TabIndex = 19;
+            // 
             // frmAirConditionerManagement
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1312, 727);
+            Controls.Add(cbSupplierID);
             Controls.Add(groupBox1);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
             Controls.Add(dataGridView1);
             Controls.Add(txtDolarPrice);
             Controls.Add(txtSoundPressureLevel);
-            Controls.Add(txtSupplierID);
             Controls.Add(txtFeatureFunction);
             Controls.Add(txtWarranty);
             Controls.Add(txtAirConditionerID);
@@ -311,7 +312,6 @@
         private TextBox txtWarranty;
         private TextBox txtSoundPressureLevel;
         private TextBox txtFeatureFunction;
-        private TextBox txtSupplierID;
         private DataGridView dataGridView1;
         private Button btnSave;
         private Button btnUpdate;
@@ -323,5 +323,6 @@
         private TextBox txtDolarPrice;
         private TextBox txtQuantity;
         private GroupBox groupBox1;
+        private ComboBox cbSupplierID;
     }
 }
