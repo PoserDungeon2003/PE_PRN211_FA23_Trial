@@ -99,6 +99,7 @@ namespace PE_PRN211_FA23_Trial_SE173445
                 txtSoundPressureLevel.Text = row.Cells[4].Value.ToString();
                 txtDolarPrice.Text = row.Cells[5].Value.ToString();
                 txtFeatureFunction.Text = row.Cells[6].Value.ToString();
+                cbSupplierID.Text = row.Cells[7].Value.ToString();
             }
         }
 
