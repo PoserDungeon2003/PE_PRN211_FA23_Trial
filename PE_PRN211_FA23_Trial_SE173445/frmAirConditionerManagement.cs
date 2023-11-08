@@ -15,9 +15,8 @@ namespace PE_PRN211_FA23_Trial_SE173445
 {
     public partial class frmAirConditionerManagement : Form
     {
-        private AirConditionerShop2023DBContext context = new();
         private AirConditionerRepo airConditionerRepo = new();
-        public int Role { get; set; }
+
         public frmAirConditionerManagement()
         {
             InitializeComponent();
@@ -28,9 +27,10 @@ namespace PE_PRN211_FA23_Trial_SE173445
             LoadInfo();
         }
 
-        private void LoadInfo()
+        public void LoadInfo()
         {
-            dataGridView1.DataSource = context.AirConditioners.Include(x => x.Supplier).Select(x => new
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = airConditionerRepo.GetAll().Select(x => new
             {
                 x.AirConditionerId,
                 x.AirConditionerName,
@@ -41,7 +41,7 @@ namespace PE_PRN211_FA23_Trial_SE173445
                 x.DollarPrice,
                 x.Supplier.SupplierName
             }).ToList();
-            cbSupplierID.DataSource = context.SupplierCompanies.Select(x => new
+            cbSupplierID.DataSource = airConditionerRepo.GetAllCompany().Select(x => new
             {
                 x.SupplierId,
                 x.SupplierName
@@ -105,18 +105,45 @@ namespace PE_PRN211_FA23_Trial_SE173445
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string id = txtAirConditionerID.Text;
-            DialogResult dialog = MessageBox.Show($"Are you sure you want to delte this product: {id}", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            int id;
+            if (string.IsNullOrWhiteSpace(txtAirConditionerID.Text)
+                || !int.TryParse(txtAirConditionerID.Text, out id))
+            {
+                MessageBox.Show("The Airconditioner ID is invalid. Please select a row to delete",
+                    "Invalid AirconditionerID",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            DialogResult dialog = MessageBox.Show($"Are you sure you want to delete this product: {id}", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (dialog == DialogResult.Yes)
             {
                 airConditionerRepo.DeleteAirConditionerByID(id);
-                dataGridView1.DataSource = null;
                 LoadInfo();
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            int id;
+            if (string.IsNullOrWhiteSpace(txtAirConditionerID.Text)
+                || !int.TryParse(txtAirConditionerID.Text, out id))
+            {
+                MessageBox.Show("The Airconditioner ID is invalid. Please select a row to update",
+                    "Invalid AirconditionerID",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            frmAirConditionerDetail frmAirConditionerDetail = new();
+            frmAirConditionerDetail.AirConditionerID = int.Parse(txtAirConditionerID.Text);
+            frmAirConditionerDetail.ShowDialog(this);
+            LoadInfo();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frmAirConditionerDetail frmAirConditionerDetail = new();
+            frmAirConditionerDetail.ShowDialog(this);
+            LoadInfo();
 
         }
     }

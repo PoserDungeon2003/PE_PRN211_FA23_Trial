@@ -42,24 +42,28 @@ namespace PE_PRN211_FA23_Trial_SE173445
                     management.ShowDialog();
                     this.Show();
                 }
-                else if (role == 2)
-                {
-                    this.Hide();
-                    management.Tag = 2;
-                    management.ShowDialog();
-                    this.Show();
-                }
                 else
                 {
-                    this.Hide();
-                    management.Tag = 3;
-                    management.ShowDialog();
-                    this.Show();
+                    MessageBox.Show("You have no permission to access this function!");
                 }
+                //else if (role == 2)
+                //{
+                //    this.Hide();
+                //    management.Tag = 2;
+                //    management.ShowDialog();
+                //    this.Show();
+                //}
+                //else
+                //{
+                //    this.Hide();
+                //    management.Tag = 3;
+                //    management.ShowDialog();
+                //    this.Show();
+                //}
             }
             else
             {
-                MessageBox.Show("You have no permission to access this function!");
+                MessageBox.Show("Invalid username or password!");
             }
         }
 

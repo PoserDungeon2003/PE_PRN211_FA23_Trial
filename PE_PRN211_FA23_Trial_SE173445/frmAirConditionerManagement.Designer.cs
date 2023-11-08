@@ -41,7 +41,7 @@
             txtSoundPressureLevel = new TextBox();
             txtFeatureFunction = new TextBox();
             dataGridView1 = new DataGridView();
-            btnSave = new Button();
+            btnAdd = new Button();
             btnUpdate = new Button();
             btnDelete = new Button();
             btnClose = new Button();
@@ -168,14 +168,15 @@
             dataGridView1.TabIndex = 9;
             dataGridView1.SelectionChanged += ViewProduct;
             // 
-            // btnSave
+            // btnAdd
             // 
-            btnSave.Location = new Point(188, 26);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
-            btnSave.TabIndex = 10;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = true;
+            btnAdd.Location = new Point(188, 26);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(94, 29);
+            btnAdd.TabIndex = 10;
+            btnAdd.Text = "Add";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnUpdate
             // 
@@ -247,7 +248,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btnSave);
+            groupBox1.Controls.Add(btnAdd);
             groupBox1.Controls.Add(btnUpdate);
             groupBox1.Controls.Add(btnDelete);
             groupBox1.Controls.Add(btnClose);
@@ -314,7 +315,7 @@
         private TextBox txtSoundPressureLevel;
         private TextBox txtFeatureFunction;
         private DataGridView dataGridView1;
-        private Button btnSave;
+        private Button btnAdd;
         private Button btnUpdate;
         private Button btnDelete;
         private Button btnClose;
