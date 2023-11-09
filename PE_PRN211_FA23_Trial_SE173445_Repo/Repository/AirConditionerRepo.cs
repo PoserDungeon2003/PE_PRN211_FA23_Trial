@@ -23,12 +23,8 @@ namespace PE_PRN211_FA23_Trial_SE173445_Repo.Repository
         }
         public bool CheckExistedItem(int id)
         {
-            var existedItem = context.AirConditioners.FirstOrDefault(x => x.AirConditionerId.Equals(id));
-            if (existedItem != null)
-            {
-                return true;
-            }
-            return false;
+            return context.AirConditioners.Any(x => x.AirConditionerId.Equals(id));
+
         }
         public IEnumerable<SupplierCompany> GetAllCompany()
         {
